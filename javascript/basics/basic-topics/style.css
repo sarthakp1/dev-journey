@@ -1,0 +1,22 @@
+body{
+    text-align: center;
+}
+
+div{
+    background-color: yellow;
+    text-align: right;
+}
+
+span{
+    background-color: greenyellow;
+    text-align: right;
+}
+
+para{
+    background-color: aquamarine;
+
+}
+
+inline{
+    background-color: aqua;
+}

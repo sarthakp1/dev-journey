@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="signup-container">
+    <h2>Sign Up</h2>
+    <form>
+      <input type="text" placeholder="Username" id="username"  />
+      <input type="password" placeholder="Password" id="password"  />
+      <button type="button" onclick="handleSubmit()">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="#">Log in</a></p>
+  </div>
+
+   <div class="signup-container">
+    <h2>Log In</h2>
+    <form>
+      <input type="text" placeholder="Username" id="loginUsername"  />
+      <input type="password" placeholder="Password" id="loginPassword" />
+      <button type="button" onclick="handleLogin()">Log In</button>
+    </form>
+  </div>
+
+  <script>
+    function handleSubmit(){
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+
+        let data = {
+            username: username,
+            password: password
+        }
+        
+        localStorage.setItem('data',JSON.stringify(data));
+
+    }   
+
+    function handleLogin(){ 
+      let username = document.getElementById("loginUsername");
+      let password = document.getElementById("loginPassword");
+
+      let data = localStorage.getItem('data');
+      data = JSON.parse(data);
+
+      if(username.value === data.username && password.value === data.password){
+        console.log("Success");
+      }else{
+        console.log("Fail");
+      } 
+
+    }
+  </script>
+
+</body>
+</html>
