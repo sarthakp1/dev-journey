@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>TODO LIST</title>
-  <link rel="stylesheet" href="todo.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>TODO LIST</title>
+    <link rel="stylesheet" href="todo.css" />
+  </head>
+  <body>
+    <div class="input-container">
+      <input type="text" placeholder="Enter something..." id="userInput" />
+      <button onclick="addTask()">Add</button>
+      <ul id="list"></ul>
+    </div>
 
-    
+    <script>
+      let list = [];
 
-<div class="input-container">
-    <input type="text" placeholder="Enter something..." id="userInput">
-    <button onclick="addTask()">Add</button>
-</div>
+      function addTask() {
+        let task = document.querySelector("#userInput");
+        let taskText = task.value;
 
-<script>
+        if (taskText === "") {
+          alert("Please enter a todo item");
+          return;
+        }
 
-    let list = []   
-    
-    function addTask() {
-        let task = document.querySelector("#userInput").value;
-        list.push(task);
+        let taskList = document.querySelector("#list");
+        taskList.innerHTML = taskList.innerHTML + `<li>${taskText}</li>`;
+
+        list.push(taskText);
         console.log(list);
 
-        task.value=''
-        
-    }        
-</script>
-
-</body>
+        task.value = "";
+      }
+    </script>
+  </body>
 </html>
