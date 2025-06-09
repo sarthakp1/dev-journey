@@ -6,10 +6,14 @@
     <link rel="stylesheet" href="todo.css" />
   </head>
   <body>
-    <div class="input-container">
-      <input type="text" placeholder="Enter something..." id="userInput" />
-      <button onclick="addTask()">Add</button>
-      <ul id="list"></ul>
+    <div class="todo-container">
+      <h1 class="heading">📝 My To-Do List</h1>
+
+      <div class="input-container">
+        <input type="text" placeholder="Enter something..." id="userInput" />
+        <button onclick="addTask()">Add</button>
+        <ul id="list"></ul>
+      </div>
     </div>
 
     <script>
@@ -24,13 +28,29 @@
           return;
         }
 
-        let taskList = document.querySelector("#list");
-        taskList.innerHTML = taskList.innerHTML + `<li>${taskText}</li>`;
-
         list.push(taskText);
         console.log(list);
 
+        renderList();
+
         task.value = "";
+      }
+
+      function renderList() {
+        let listStr = "";
+        for (i = 0; i < list.length; i++) {
+          listStr += `<li>${list[i]} <button class="delete-btn" onclick=deleteItem(${i})>Delete</button></li>`;
+        }
+
+        let taskList = document.querySelector("#list");
+
+        taskList.innerHTML = listStr;
+      }
+
+      function deleteItem(index) {
+        list.splice(index, 1);
+        console.log(list);
+        renderList();
       }
     </script>
   </body>
