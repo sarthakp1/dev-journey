@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scope and Hoisting</title>
+  </head>
+  <body>
+    <script>
+      //Global scope - can be used throughout the prog
+      let a = 1;
+
+      if (true) {
+        console.log(a);
+      }
+
+      if (true) {
+        //Blocked scope - only inside the block that it is declared
+        let z = 1;
+        console.log(z);
+      }
+
+      //Hoisting - for let/const
+      //let a;  this is done by JS internally
+      console.log(a);
+      let a = 10; // error comes cannot be used before initialization
+      // output - error comes cannot use before initilization
+
+      //Hoisting for var
+      // var z = undefined; this is done by JS
+      console.log(a);
+      var z = 10;
+      //output - undefiened
+    </script>
+  </body>
+</html>
