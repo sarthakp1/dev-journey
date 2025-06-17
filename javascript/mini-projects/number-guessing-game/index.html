@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <h2>Guess the Number!</h2>
+      <p>I’m thinking of a number between 1 and 10.</p>
+      <input
+        type="number"
+        id="guessInput"
+        placeholder="Enter your guess"
+        min="1"
+        max="10"
+      />
+      <br />
+      <button onclick="checkGuess()">Check</button>
+      <p class="message" id="message"></p>
+    </div>
+
+    <script>
+      function checkGuess() {
+        let randomNumber = Math.floor(Math.random() * 10) + 1;
+        console.log(randomNumber);
+
+        let userInput = document.querySelector("#guessInput").value;
+        console.log(userInput);
+
+        if (userInput < 1 || userInput > 10) {
+          alert("Enter the number between range - 1 to 10");
+        } else if (userInput == randomNumber) {
+          console.log(`You guessed correct number ${userInput}`);
+        } else {
+          console.log(
+            `You guessed wrong number! The actual number was ${randomNumber}`
+          );
+        }
+      }
+    </script>
+  </body>
+</html>
